@@ -15,11 +15,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
  * @History: // 历史修改记录
  */
 @Controller
-@RequestMapping("/mvc")
+@RequestMapping("mvc")
 public class DemoController
 {
 
-    @RequestMapping(value = "hello", method = RequestMethod.POST)
+    @RequestMapping(value = "hello")
     public String hello() {
         return "hello";
     }
