@@ -1,5 +1,8 @@
 package TwoWay;
 
+import OneWay.BaseSocketServer;
+import jdk.net.Sockets;
+
 import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
@@ -64,5 +67,19 @@ public class SocketServer
 
         this.outputStream.close();
         this.socket.close();
+    }
+
+    public static void main(String[] args)
+    {
+        SocketServer ss = new SocketServer(9799);
+
+        try
+        {
+            ss.runServer();
+        }
+        catch (IOException e)
+        {
+            e.printStackTrace();
+        }
     }
 }
