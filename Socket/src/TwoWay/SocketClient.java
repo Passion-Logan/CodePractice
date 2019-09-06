@@ -68,11 +68,11 @@ public class SocketClient
 
     public static void main(String[] args)
     {
-        SocketClient bc = new SocketClient("localhost", 9799);
+        SocketClient sc = new SocketClient("localhost", 9799);
         try
         {
-            bc.connetServer();
-            bc.sendSingle("Hi from Socket");
+            sc.connetServer();
+            sc.sendMessage("Hi from Socket");
         }
         catch (IOException e)
         {
