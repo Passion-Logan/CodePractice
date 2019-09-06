@@ -53,7 +53,7 @@ public class SocketClient
                 receipt.append(new String(readBytes, 0, msgLen, "UTF-8"));
             }
 
-            System.out.println("got receipt: " + receipt.toString());
+            System.out.println("get receipt: " + receipt.toString());
         }
         catch (IOException e)
         {
