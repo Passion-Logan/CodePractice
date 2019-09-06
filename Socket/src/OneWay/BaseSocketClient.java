@@ -49,6 +49,15 @@ public class BaseSocketClient
 
     public static void main(String[] args)
     {
-        
+        BaseSocketClient bc = new BaseSocketClient("localhost", 9799);
+        try
+        {
+            bc.connetServer();
+            bc.sendSingle("Hi from Socket");
+        }
+        catch (IOException e)
+        {
+            e.printStackTrace();
+        }
     }
 }
