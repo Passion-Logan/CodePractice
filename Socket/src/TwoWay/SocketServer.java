@@ -56,13 +56,13 @@ public class SocketServer
             stringBuilder.append(new String(readBytes, 0, msgLen, "UTF-8"));
         }
 
-        System.out.println("received message: " + stringBuilder);
+        System.out.println("received message: " + stringBuilder.toString());
 
         // 告诉客户端已经接收完毕，之后只能发送
         this.socket.shutdownInput();
 
         this.outputStream = this.socket.getOutputStream();
-        String receipt = "We received your message: " + stringBuilder;
+        String receipt = "We received your message: " + stringBuilder.toString();
         outputStream.write(receipt.getBytes("UTF-8"));
 
         this.outputStream.close();

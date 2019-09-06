@@ -3,6 +3,7 @@ package TwoWay;
 import OneWay.BaseSocketClient;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.Socket;
 
@@ -22,6 +23,7 @@ public class SocketClient
     private int serverPort;
     private Socket socket;
     private OutputStream outputStream;
+    private InputStream inputStream;
 
     public SocketClient(String host, int port) {
         this.serverHost = host;
@@ -34,23 +36,39 @@ public class SocketClient
         this.outputStream = socket.getOutputStream();
     }
 
-    public void sendSingle(String message) throws IOException
+    public void sendMessage(String message) throws IOException
     {
         try
         {
             this.outputStream.write(message.getBytes("UTF-8"));
+            // 告诉服务器，所有的发送动作已经结束，之后只能接收
+            this.socket.shutdownOutput();
+
+            this.inputStream = socket.getInputStream();
+
+            byte[] readBytes = new byte[1024];
+
+            int msgLen;
+            StringBuilder receipt = new StringBuilder();
+
+            while ((msgLen = inputStream.read(readBytes)) != -1) {
+                receipt.append(new String(readBytes, 0, msgLen, "UTF-8"));
+            }
+
+            System.out.println("got receipt: " + receipt.toString());
         }
         catch (IOException e)
         {
             System.out.println(e.getMessage());
         }
+        this.inputStream.close();
         this.outputStream.close();
         this.socket.close();
     }
 
     public static void main(String[] args)
     {
-        BaseSocketClient bc = new BaseSocketClient("localhost", 9799);
+        SocketClient bc = new SocketClient("localhost", 9799);
         try
         {
             bc.connetServer();
