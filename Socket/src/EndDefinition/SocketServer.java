@@ -67,9 +67,14 @@ public class SocketServer
         // 告诉客户端已经接收完毕，之后只能发送
         this.socket.shutdownInput();
 
-        this.outputStream = this.socket.getOutputStream();
+        //this.outputStream = this.socket.getOutputStream();
+        this.bw = new BufferedWriter(new OutputStreamWriter(this.socket.getOutputStream(), "UTF-8"));
+
         String receipt = "We received your message: " + stringBuilder.toString();
-        outputStream.write(receipt.getBytes("UTF-8"));
+        //outputStream.write(receipt.getBytes("UTF-8"));
+        bw.write(receipt);
+
+        this.br.close();
 
         this.outputStream.close();
         this.socket.close();
