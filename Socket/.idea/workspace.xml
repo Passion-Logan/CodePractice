@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c6bef814-5cd9-4380-b7d5-76226c5caae2" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/EndDefinition/SocketClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/EndDefinition/SocketClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EndDefinition/SocketServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/EndDefinition/SocketServer.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -13,20 +13,20 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/EndDefinition/SocketClient.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1775">
-              <caret line="72" column="24" selection-start-line="72" selection-start-column="24" selection-end-line="72" selection-end-column="24" />
+            <state relative-caret-position="850">
+              <caret line="77" lean-forward="true" selection-start-line="77" selection-end-line="77" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/EndDefinition/SocketServer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="425">
-              <caret line="78" column="34" lean-forward="true" selection-start-line="78" selection-start-column="34" selection-end-line="78" selection-end-column="34" />
+            <state relative-caret-position="700">
+              <caret line="62" column="8" selection-start-line="62" selection-start-column="8" selection-end-line="62" selection-end-column="8" />
             </state>
           </provider>
         </entry>
@@ -55,8 +55,8 @@
         <option value="$PROJECT_DIR$/src/OneWay/BaseSocketClient.java" />
         <option value="$PROJECT_DIR$/src/TwoWay/SocketClient.java" />
         <option value="$PROJECT_DIR$/src/TwoWay/SocketServer.java" />
-        <option value="$PROJECT_DIR$/src/EndDefinition/SocketServer.java" />
         <option value="$PROJECT_DIR$/src/EndDefinition/SocketClient.java" />
+        <option value="$PROJECT_DIR$/src/EndDefinition/SocketServer.java" />
       </list>
     </option>
   </component>
@@ -124,7 +124,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1567868152342" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1567870037257" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="D:/Node/node" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="settings.editor.selected.configurable" value="preferences.general" />
@@ -146,7 +146,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.SocketClient">
+  <component name="RunManager" selected="Application.SocketClient (1)">
     <configuration name="BaseSocketClient" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="OneWay.BaseSocketClient" />
       <module name="Socket" />
@@ -160,12 +160,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="BaseSocketServer" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="OneWay.BaseSocketServer" />
+    <configuration name="SocketClient (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="EndDefinition.SocketClient" />
       <module name="Socket" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="OneWay.*" />
+          <option name="PATTERN" value="EndDefinition.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -179,6 +179,19 @@
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="TwoWay.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SocketServer (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="EndDefinition.SocketServer" />
+      <module name="Socket" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="EndDefinition.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -201,10 +214,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.SocketClient (1)" />
+        <item itemvalue="Application.SocketServer (1)" />
         <item itemvalue="Application.SocketClient" />
         <item itemvalue="Application.SocketServer" />
         <item itemvalue="Application.BaseSocketClient" />
-        <item itemvalue="Application.BaseSocketServer" />
       </list>
     </recent_temporary>
   </component>
@@ -219,18 +233,18 @@
       <option name="presentableId" value="Default" />
       <updated>1567756645768</updated>
       <workItem from="1567756675221" duration="9293000" />
-      <workItem from="1567866585074" duration="2384000" />
+      <workItem from="1567866585074" duration="2714000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="11677000" />
+    <option name="totallyTimeSpent" value="12007000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="22" width="1382" height="754" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25340393" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25340393" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -312,17 +326,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/EndDefinition/SocketServer.java">
+    <entry file="file://$PROJECT_DIR$/src/EndDefinition/SocketClient.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="78" column="34" lean-forward="true" selection-start-line="78" selection-start-column="34" selection-end-line="78" selection-end-column="34" />
+        <state relative-caret-position="850">
+          <caret line="77" lean-forward="true" selection-start-line="77" selection-end-line="77" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/EndDefinition/SocketClient.java">
+    <entry file="file://$PROJECT_DIR$/src/EndDefinition/SocketServer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1775">
-          <caret line="72" column="24" selection-start-line="72" selection-start-column="24" selection-end-line="72" selection-end-column="24" />
+        <state relative-caret-position="700">
+          <caret line="62" column="8" selection-start-line="62" selection-start-column="8" selection-end-line="62" selection-end-column="8" />
         </state>
       </provider>
     </entry>

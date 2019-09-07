@@ -3,6 +3,7 @@ package EndDefinition;
 import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.Scanner;
 
 /**
  * @File Name: TwoWay
@@ -22,8 +23,6 @@ public class SocketServer
     private int port;
     private InputStream inputStream;
     private OutputStream outputStream;
-    private BufferedReader br;
-    private BufferedWriter bw;
 
     public int getPort()
     {
@@ -42,41 +41,17 @@ public class SocketServer
     public void runServer() throws IOException
     {
         this.server = new ServerSocket(port);
+        System.out.println("base socket server started.");
+
         this.socket = server.accept();
-        //this.inputStream = socket.getInputStream();
-        this.br = new BufferedReader(new InputStreamReader(socket.getInputStream(), "UTF-8"));
 
-        //byte[] readBytes = new byte[1024];
-
-        String str;
-        StringBuilder stringBuilder = new StringBuilder();
-
-        while ((str = br.readLine()) != null) {
-            stringBuilder.append(str);
+        this.inputStream = socket.getInputStream();
+        Scanner sc = new Scanner(this.inputStream);
+        while (sc.hasNextLine()) {
+            System.out.println("get info from client: " + sc.nextLine());
         }
 
-        /*int msgLen;
-        StringBuilder stringBuilder = new StringBuilder();
-
-        while ((msgLen = inputStream.read(readBytes)) != -1) {
-            stringBuilder.append(new String(readBytes, 0, msgLen, "UTF-8"));
-        }*/
-
-        System.out.println("received message: " + stringBuilder.toString());
-
-        // 告诉客户端已经接收完毕，之后只能发送
-        this.socket.shutdownInput();
-
-        //this.outputStream = this.socket.getOutputStream();
-        this.bw = new BufferedWriter(new OutputStreamWriter(this.socket.getOutputStream(), "UTF-8"));
-
-        String receipt = "We received your message: " + stringBuilder.toString();
-        //outputStream.write(receipt.getBytes("UTF-8"));
-        bw.write(receipt);
-
-        this.br.close();
-
-        this.outputStream.close();
+        this.inputStream.close();
         this.socket.close();
     }
 
