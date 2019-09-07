@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c6bef814-5cd9-4380-b7d5-76226c5caae2" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/EndDefinition/SocketClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/EndDefinition/SocketClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Socket/EndDefinition/SocketClient.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Socket/EndDefinition/SocketClient.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Socket/EndDefinition/SocketServer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Socket/EndDefinition/SocketServer.class" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -16,8 +18,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/EndDefinition/SocketClient.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="607">
-              <caret line="64" column="32" lean-forward="true" selection-start-line="64" selection-start-column="32" selection-end-line="64" selection-end-column="32" />
+            <state relative-caret-position="200">
+              <caret line="59" column="35" selection-start-line="59" selection-start-column="31" selection-end-line="59" selection-end-column="35" />
             </state>
           </provider>
         </entry>
@@ -25,8 +27,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/EndDefinition/SocketServer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="125">
-              <caret line="51" column="34" lean-forward="true" selection-start-line="51" selection-start-column="34" selection-end-line="51" selection-end-column="34" />
+            <state relative-caret-position="141">
+              <caret line="49" column="31" selection-start-line="49" selection-start-column="31" selection-end-line="49" selection-end-column="31" />
             </state>
           </provider>
         </entry>
@@ -55,8 +57,8 @@
         <option value="$PROJECT_DIR$/src/OneWay/BaseSocketClient.java" />
         <option value="$PROJECT_DIR$/src/TwoWay/SocketClient.java" />
         <option value="$PROJECT_DIR$/src/TwoWay/SocketServer.java" />
-        <option value="$PROJECT_DIR$/src/EndDefinition/SocketServer.java" />
         <option value="$PROJECT_DIR$/src/EndDefinition/SocketClient.java" />
+        <option value="$PROJECT_DIR$/src/EndDefinition/SocketServer.java" />
       </list>
     </option>
   </component>
@@ -124,7 +126,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1567870559376" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1567871297020" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="D:/Node/node" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="settings.editor.selected.configurable" value="preferences.general" />
@@ -233,16 +235,15 @@
       <option name="presentableId" value="Default" />
       <updated>1567756645768</updated>
       <workItem from="1567756675221" duration="9293000" />
-      <workItem from="1567866585074" duration="3289000" />
+      <workItem from="1567866585074" duration="4157000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="12582000" />
+    <option name="totallyTimeSpent" value="13450000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="22" width="1382" height="754" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25340393" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -328,15 +329,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/EndDefinition/SocketServer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="125">
-          <caret line="51" column="34" lean-forward="true" selection-start-line="51" selection-start-column="34" selection-end-line="51" selection-end-column="34" />
+        <state relative-caret-position="141">
+          <caret line="49" column="31" selection-start-line="49" selection-start-column="31" selection-end-line="49" selection-end-column="31" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/EndDefinition/SocketClient.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="607">
-          <caret line="64" column="32" lean-forward="true" selection-start-line="64" selection-start-column="32" selection-end-line="64" selection-end-column="32" />
+        <state relative-caret-position="200">
+          <caret line="59" column="35" selection-start-line="59" selection-start-column="31" selection-end-line="59" selection-end-column="35" />
         </state>
       </provider>
     </entry>
