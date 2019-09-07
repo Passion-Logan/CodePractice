@@ -2,7 +2,6 @@ package EndDefinition;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.OutputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.Scanner;
@@ -24,7 +23,6 @@ public class SocketServer
     private Socket socket;
     private int port;
     private InputStream inputStream;
-    private OutputStream outputStream;
 
     public int getPort()
     {
