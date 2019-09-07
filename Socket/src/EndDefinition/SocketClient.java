@@ -1,6 +1,7 @@
 package EndDefinition;
 
-import java.io.*;
+import java.io.IOException;
+import java.io.OutputStream;
 import java.net.Socket;
 
 /**
@@ -19,9 +20,6 @@ public class SocketClient
     private int serverPort;
     private Socket socket;
     private OutputStream outputStream;
-    private InputStream inputStream;
-    private BufferedReader br;
-    private BufferedWriter bw;
 
     public SocketClient(String host, int port) {
         this.serverHost = host;
@@ -31,48 +29,21 @@ public class SocketClient
     public void connetServer() throws IOException
     {
         this.socket = new Socket(this.serverHost, this.serverPort);
-        //this.outputStream = socket.getOutputStream();
-        this.bw = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
+        this.outputStream = socket.getOutputStream();
     }
 
     public void sendMessage(String message) throws IOException
     {
+        String sendMsg = message + "/n";
         try
         {
-            this.bw.write(message);
-            //this.outputStream.write(message.getBytes("UTF-8"));
-            // 告诉服务器，所有的发送动作已经结束，之后只能接收
-            this.socket.shutdownOutput();
-
-            //this.inputStream = socket.getInputStream();
-            this.br = new BufferedReader(new InputStreamReader(this.socket.getInputStream()));
-
-            String str;
-            StringBuilder receipt = new StringBuilder();
-
-            while ((str = br.readLine()) != null) {
-                receipt.append(str);
-            }
-
-            /*byte[] readBytes = new byte[1024];
-
-            int msgLen;
-            StringBuilder receipt = new StringBuilder();
-
-            while ((msgLen = inputStream.read(readBytes)) != -1) {
-                receipt.append(new String(readBytes, 0, msgLen, "UTF-8"));
-            }*/
-
-            System.out.println("get receipt: " + receipt.toString());
+            this.outputStream.write(sendMsg.getBytes("UTF-8"));
         }
         catch (IOException e)
         {
             System.out.println(e.getMessage());
         }
-        this.br.close();
-        this.bw.close();
-        /*this.inputStream.close();
-        this.outputStream.close();*/
+        this.outputStream.close();
         this.socket.close();
     }
 
