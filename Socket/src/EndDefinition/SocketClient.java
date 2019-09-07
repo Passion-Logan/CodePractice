@@ -35,7 +35,7 @@ public class SocketClient
 
     public void sendMessage(String message) throws IOException
     {
-        String sendMsg = message + "/n";
+        String sendMsg = message + "\n";
         try
         {
             this.outputStream.write(sendMsg.getBytes("UTF-8"));
