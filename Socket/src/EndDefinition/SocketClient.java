@@ -3,6 +3,7 @@ package EndDefinition;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.net.Socket;
+import java.util.Scanner;
 
 /**
  * @File Name: TwoWay
@@ -53,7 +54,11 @@ public class SocketClient
         try
         {
             sc.connetServer();
-            sc.sendMessage("Hi from Socket");
+            Scanner s = new Scanner(System.in);
+            while (s.hasNext()) {
+                String line = s.nextLine();
+                sc.sendMessage(line);
+            }
         }
         catch (IOException e)
         {
