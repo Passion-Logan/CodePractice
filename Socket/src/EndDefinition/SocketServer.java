@@ -1,8 +1,6 @@
 package EndDefinition;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
+import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
 
@@ -24,6 +22,8 @@ public class SocketServer
     private int port;
     private InputStream inputStream;
     private OutputStream outputStream;
+    private BufferedReader br;
+    private BufferedWriter bw;
 
     public int getPort()
     {
@@ -43,16 +43,24 @@ public class SocketServer
     {
         this.server = new ServerSocket(port);
         this.socket = server.accept();
-        this.inputStream = socket.getInputStream();
+        //this.inputStream = socket.getInputStream();
+        this.br = new BufferedReader(new InputStreamReader(socket.getInputStream(), "UTF-8"));
 
-        byte[] readBytes = new byte[1024];
+        //byte[] readBytes = new byte[1024];
 
-        int msgLen;
+        String str;
+        StringBuilder stringBuilder = new StringBuilder();
+
+        while ((str = br.readLine()) != null) {
+            stringBuilder.append(str);
+        }
+
+        /*int msgLen;
         StringBuilder stringBuilder = new StringBuilder();
 
         while ((msgLen = inputStream.read(readBytes)) != -1) {
             stringBuilder.append(new String(readBytes, 0, msgLen, "UTF-8"));
-        }
+        }*/
 
         System.out.println("received message: " + stringBuilder.toString());
 
