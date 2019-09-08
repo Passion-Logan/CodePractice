@@ -1,3 +1,4 @@
+import java.io.InputStream;
 import java.net.Socket;
 
 /**
@@ -14,10 +15,11 @@ public class ThreadSocket implements Runnable
 {
 
     private Socket socket;
+    private InputStream inputStream;
 
     @Override
     public void run()
     {
-        
+
     }
 }
