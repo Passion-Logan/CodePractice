@@ -1,3 +1,5 @@
+import java.net.Socket;
+
 /**
  * @File Name: PACKAGE_NAME
  * @Author: WQL //作者及
@@ -8,6 +10,14 @@
  * @Others: // 其它内容的说明
  * @History: // 历史修改记录
  */
-public class ThreadSocket
+public class ThreadSocket implements Runnable
 {
+
+    private Socket socket;
+
+    @Override
+    public void run()
+    {
+        
+    }
 }
