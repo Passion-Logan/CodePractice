@@ -17,6 +17,10 @@ public class ThreadSocket implements Runnable
     private Socket socket;
     private InputStream inputStream;
 
+    public ThreadSocket(Socket socket) {
+        this.socket = socket;
+    }
+
     @Override
     public void run()
     {
