@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c6bef814-5cd9-4380-b7d5-76226c5caae2" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ThreadSocket.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ThreadSocket.java" afterDir="false" />
-    </list>
+    <list default="true" id="c6bef814-5cd9-4380-b7d5-76226c5caae2" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -26,14 +23,12 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/ThreadSocket.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="421">
-              <caret line="26" column="24" selection-start-line="26" selection-start-column="24" selection-end-line="26" selection-end-column="24" />
+            <state relative-caret-position="346">
+              <caret line="27" column="11" lean-forward="true" selection-start-line="27" selection-start-column="11" selection-end-line="27" selection-end-column="11" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#423#424#0" expanded="true" />
                 <element signature="e#459#460#0" expanded="true" />
-                <element signature="e#502#503#0" expanded="true" />
-                <element signature="e#518#519#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -124,7 +119,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1567958384581" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1567958397724" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="D:/Node/node" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="settings.editor.selected.configurable" value="preferences.general" />
@@ -234,12 +229,12 @@
       <updated>1567756645768</updated>
       <workItem from="1567756675221" duration="9293000" />
       <workItem from="1567866585074" duration="4157000" />
-      <workItem from="1567955941086" duration="1853000" />
+      <workItem from="1567955941086" duration="1950000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="15303000" />
+    <option name="totallyTimeSpent" value="15400000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="22" width="1382" height="754" extended-state="6" />
@@ -343,14 +338,12 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ThreadSocket.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="421">
-          <caret line="26" column="24" selection-start-line="26" selection-start-column="24" selection-end-line="26" selection-end-column="24" />
+        <state relative-caret-position="346">
+          <caret line="27" column="11" lean-forward="true" selection-start-line="27" selection-start-column="11" selection-end-line="27" selection-end-column="11" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#423#424#0" expanded="true" />
             <element signature="e#459#460#0" expanded="true" />
-            <element signature="e#502#503#0" expanded="true" />
-            <element signature="e#518#519#0" expanded="true" />
           </folding>
         </state>
       </provider>
