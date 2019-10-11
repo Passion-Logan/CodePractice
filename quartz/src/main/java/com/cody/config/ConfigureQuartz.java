@@ -1,9 +1,7 @@
 package com.cody.config;
-import	java.beans.Beans;
+import java.io.IOException;
 import java.util.Properties;
 
-import com.fasterxml.jackson.core.JsonFactory;
-import org.quartz.SchedulerFactory;
 import org.quartz.spi.JobFactory;
 import org.quartz.spi.TriggerFiredBundle;
 import org.springframework.beans.factory.config.AutowireCapableBeanFactory;
@@ -12,6 +10,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.scheduling.quartz.SchedulerFactoryBean;
 import org.springframework.scheduling.quartz.SpringBeanJobFactory;
 
@@ -41,8 +40,17 @@ public class ConfigureQuartz {
         return jobFactory;
     }
 
+    /**
+     * SchedulerFactoryBean这个类的真正作用提供了对org.quartz.Scheduler的创建与配置，并且会管理它的生命周期与Spring同步
+     * org.quartz.Scheduler: 调度器。所有的调度都是由它控制。
+     *
+     * @param dataSource 为SchedulerFactory配置数据源
+     * @param jobFactory 为SchedulerFactory配置JobFactory
+     * @return
+     * @throws IOException
+     */
     @Bean
-    public SchedulerFactoryBean schedulerFactoryBean(DataSource dataSource, JobFactory jobFactory) {
+    public SchedulerFactoryBean schedulerFactoryBean(DataSource dataSource, JobFactory jobFactory) throws IOException {
         SchedulerFactoryBean factory = new SchedulerFactoryBean();
         // 可选，QuartzScheduler启动时更新已存在的Job，这样就不用每次修改targetObject后删除quartz_job_details表对应记录
         factory.setOverwriteExistingJobs(true);
@@ -50,15 +58,22 @@ public class ConfigureQuartz {
         factory.setAutoStartup(true);
         factory.setDataSource(dataSource);
         factory.setJobFactory(jobFactory);
-        factory.setQuartzProperties();
+        factory.setQuartzProperties(quartzProperties());
+        return factory;
     }
 
-    public Properties quartzProperties() {
+    /**
+     * 从quartz.properties文件中读取Quartz配置属性
+     * @return
+     * @throws IOException
+     */
+    @Bean
+    public Properties quartzProperties() throws IOException {
         PropertiesFactoryBean propertiesFactoryBean = new PropertiesFactoryBean();
-        propertiesFactoryBean.setLocation();
+        propertiesFactoryBean.setLocation(new ClassPathResource("/quartz.properties"));
+        propertiesFactoryBean.afterPropertiesSet();
+        return propertiesFactoryBean.getObject();
     }
-
-
 
     /**
      * 配置JobFactory，为quartz作业添加自动连接支持
