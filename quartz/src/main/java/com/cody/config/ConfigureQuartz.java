@@ -62,7 +62,7 @@ public class ConfigureQuartz {
         // 可选，QuartzScheduler启动时更新已存在的Job，这样就不用每次修改targetObject后删除quartz_job_details表对应记录
         factory.setOverwriteExistingJobs(true);
         // 项目启动完成后，等待两秒后开始执行调度器初始化
-        factory.setStartupDelay(2);
+        //factory.setStartupDelay(2);
         // 设置自行启动
         factory.setAutoStartup(true);
         // 设置数据源，使用与项目统一数据源
