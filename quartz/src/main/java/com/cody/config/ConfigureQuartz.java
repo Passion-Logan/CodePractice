@@ -56,7 +56,7 @@ public class ConfigureQuartz {
      * @return
      * @throws IOException
      */
-    @Bean()
+    @Bean
     public SchedulerFactoryBean schedulerFactoryBean(DataSource dataSource, JobFactory jobFactory) throws IOException {
         SchedulerFactoryBean factory = new SchedulerFactoryBean();
         // 可选，QuartzScheduler启动时更新已存在的Job，这样就不用每次修改targetObject后删除quartz_job_details表对应记录
