@@ -9,6 +9,7 @@ import javafx.geometry.Pos;
 import lombok.extern.slf4j.Slf4j;
 import org.quartz.*;
 import org.quartz.impl.StdSchedulerFactory;
+import org.quartz.impl.matchers.GroupMatcher;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.quartz.SchedulerFactoryBean;
 import org.springframework.stereotype.Service;
@@ -17,6 +18,7 @@ import org.springframework.util.StringUtils;
 
 import javax.annotation.PostConstruct;
 import java.util.List;
+import java.util.Set;
 
 /**
  * 应用模块名称<p>
@@ -175,5 +177,86 @@ public class ScheduleJobService {
         }
     }
 
-    
+    /**
+     * 恢复定时任务
+     * @param model
+     */
+    public void scheduleResume(ScheduleJobModel model) {
+        if (ObjectUtils.isEmpty(model.getId())){
+            throw new RuntimeException("定时任务不存在");
+        }
+        ScheduleJobPo po = repository.findByIdAndStatus(model.getId(), 2);
+        if (ObjectUtils.isEmpty(po)) {
+            throw new RuntimeException("定时任务不存在");
+        }
+        try {
+            JobKey jobKey = new JobKey(model.getJobName(), model.getGroupName());
+            JobDetail jobDetail = scheduler.getJobDetail(jobKey);
+            if (jobDetail == null) {
+                return;
+            }
+            scheduler.resumeJob(jobKey);
+            po.setStatus(0);
+            repository.save(po);
+        } catch (Exception e) {
+            log.error("exception:{}", e);
+        }
+    }
+
+    /**
+     * 删除定时任务
+     * @param model
+     */
+    public void scheduleDelete(ScheduleJobModel model) {
+        if (ObjectUtils.isEmpty(model.getId())) {
+            throw new RuntimeException("定时任务不存在");
+        }
+        ScheduleJobPo po = repository.findByIdAndStatus(model.getId(), 0);
+        if (ObjectUtils.isEmpty(po)){
+            throw new RuntimeException("定时任务不存在");
+        }
+        try {
+            JobKey jobKey = new JobKey(model.getJobName(), model.getGroupName());
+            JobDetail jobDetail = scheduler.getJobDetail(jobKey);
+            if (jobDetail == null) {
+                throw new RuntimeException("定时任务不存在");
+            }
+            scheduler.deleteJob(jobKey);
+            po.setStatus(1);
+            repository.save(po);
+        } catch (Exception e) {
+            log.error("exception:{}", e);
+        }
+    }
+
+    /**
+     * 删除所有定时任务
+     */
+    public void scheduleDeleteAll() {
+        try {
+            // 获取所有的组
+            List<String> jobGroupNameList = scheduler.getJobGroupNames();
+            for (String jobGroupName : jobGroupNameList) {
+                GroupMatcher<JobKey> jobKeyGroupMatcher = GroupMatcher.jobGroupEquals(jobGroupName);
+                Set<JobKey> jobKeySet = scheduler.getJobKeys(jobKeyGroupMatcher);
+                for (JobKey jobKey : jobKeySet) {
+                    String jobName = jobKey.getName();
+                    JobDetail jobDetail = scheduler.getJobDetail(jobKey);
+                    if (jobDetail == null) {
+                        return;
+                    }
+                    scheduler.deleteJob(jobKey);
+                    // 更新数据库
+                    List<ScheduleJobPo> poList = repository.findByGroupNameAndJobNameAndStatus(jobGroupName, jobName, 0);
+                    poList.forEach(po -> {
+                        po.setStatus(1);
+                        repository.save(po);
+                    });
+                    log.info("group:{}, job:{}", jobGroupName, jobName);
+                }
+            }
+        } catch (Exception e) {
+            log.error("exception:{}", e);
+        }
+    }
 }
