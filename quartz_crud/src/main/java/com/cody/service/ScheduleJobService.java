@@ -2,7 +2,9 @@ package com.cody.service;
 
 import com.cody.dao.ScheduleJobDaoRepository;
 import com.cody.entity.ScheduleJobPo;
+import com.cody.entity.model.ScheduleJobModel;
 import com.cody.job.ScheduleQuartzJob;
+import com.cody.util.DateUtil;
 import javafx.geometry.Pos;
 import lombok.extern.slf4j.Slf4j;
 import org.quartz.*;
@@ -10,6 +12,8 @@ import org.quartz.impl.StdSchedulerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.quartz.SchedulerFactoryBean;
 import org.springframework.stereotype.Service;
+import org.springframework.util.ObjectUtils;
+import org.springframework.util.StringUtils;
 
 import javax.annotation.PostConstruct;
 import java.util.List;
@@ -51,6 +55,7 @@ public class ScheduleJobService {
 
     /**
      * 初始化时开启定时任务
+     *
      * @param po
      */
     private void startScheduleByInit(ScheduleJobPo po) {
@@ -64,6 +69,7 @@ public class ScheduleJobService {
 
     /**
      * 开启任务
+     *
      * @param scheduler
      * @param group
      * @param name
@@ -83,5 +89,91 @@ public class ScheduleJobService {
         scheduler.scheduleJob(jobDetail, cronTrigger);
     }
 
+    /**
+     * 开启定时任务
+     *
+     * @param model
+     */
+    public void startSchedule(ScheduleJobModel model) {
+        if (StringUtils.isEmpty(model.getGroupName()) || StringUtils.isEmpty(model.getJobName()) || StringUtils.isEmpty(model.getCron())) {
+            throw new RuntimeException("参数不能为空");
+        }
+        List<ScheduleJobPo> poList = repository.findByGroupNameAndJobNameAndStatus(model.getGroupName(), model.getJobName(), 0);
+        if (!ObjectUtils.isEmpty(poList)) {
+            throw new RuntimeException("group和job名称已存在");
+        }
+        try {
+            startJob(scheduler, model.getGroupName(), model.getJobName(), model.getCron());
+            scheduler.start();
+            ScheduleJobPo scheduleJobPo = new ScheduleJobPo();
+            scheduleJobPo.setGroupName(model.getGroupName());
+            scheduleJobPo.setJobName(model.getJobName());
+            scheduleJobPo.setCron(model.getCron());
+            scheduleJobPo.setStatus(0);
+            scheduleJobPo.setCreateTime(DateUtil.getCurrentTimeStamp());
+            scheduleJobPo.setUpdateTime(DateUtil.getCurrentTimeStamp());
+            repository.save(scheduleJobPo);
+        } catch (Exception e) {
+            log.error("exception:{}", e);
+        }
+    }
 
+    /**
+     * 更新定时任务
+     *
+     * @param model
+     */
+    public void scheduleUpdateCorn(ScheduleJobModel model) {
+        if (ObjectUtils.isEmpty(model.getId()) || ObjectUtils.isEmpty(model.getCron())) {
+            throw new RuntimeException("定时任务不存在");
+        }
+        try {
+            ScheduleJobPo po = repository.findByIdAndStatus(model.getId(), 0);
+            // 获取触发器
+            TriggerKey triggerKey = new TriggerKey(po.getJobName(), po.getGroupName());
+            CronTrigger cronTrigger = (CronTrigger) scheduler.getTrigger(triggerKey);
+            String oldTime = cronTrigger.getCronExpression();
+            if (!oldTime.equalsIgnoreCase(model.getCron())) {
+                CronScheduleBuilder cronScheduleBuilder = CronScheduleBuilder.cronSchedule(model.getCron());
+                CronTrigger trigger = TriggerBuilder.newTrigger().withIdentity(po.getJobName(), po.getGroupName())
+                        .withSchedule(cronScheduleBuilder).build();
+                // 更新定时任务
+                scheduler.rescheduleJob(triggerKey, trigger);
+                po.setCron(model.getCron());
+                // 更新数据库
+                repository.save(po);
+            }
+        } catch (Exception e) {
+            log.info("exception:{}", e);
+        }
+    }
+
+    /**
+     * 暂停定时任务
+     *
+     * @param model
+     */
+    public void schedulePause(ScheduleJobModel model) {
+        if (ObjectUtils.isEmpty(model.getId())) {
+            throw new RuntimeException("定时任务不存在");
+        }
+        ScheduleJobPo po = repository.findByIdAndStatus(model.getId(), 0);
+        if (ObjectUtils.isEmpty(po)) {
+            throw new RuntimeException("定时任务不存在");
+        }
+        try {
+            JobKey jobKey = new JobKey(po.getJobName(), po.getGroupName());
+            JobDetail jobDetail = scheduler.getJobDetail(jobKey);
+            if (jobDetail == null) {
+                return;
+            }
+            scheduler.pauseJob(jobKey);
+            po.setStatus(2);
+            repository.save(po);
+        } catch (Exception e) {
+            log.error("exception:{}", e);
+        }
+    }
+
+    
 }

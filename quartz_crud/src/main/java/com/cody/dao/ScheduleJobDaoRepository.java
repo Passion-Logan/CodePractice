@@ -24,7 +24,7 @@ public interface ScheduleJobDaoRepository extends JpaRepository<ScheduleJobPo, I
      * @param status
      * @return
      */
-    public ScheduleJobPo findByIdandAndStatus(Integer id, Integer status);
+    public ScheduleJobPo findByIdAndStatus(Integer id, Integer status);
 
     /**
      * 获取指定状态的所有任务
