@@ -188,7 +188,7 @@ public class ScheduleJobService {
             throw new RuntimeException("定时任务不存在");
         }
         try {
-            JobKey jobKey = new JobKey(model.getJobName(), model.getGroupName());
+            JobKey jobKey = new JobKey(po.getJobName(), po.getGroupName());
             JobDetail jobDetail = scheduler.getJobDetail(jobKey);
             if (jobDetail == null) {
                 return;
@@ -230,7 +230,7 @@ public class ScheduleJobService {
     /**
      * 删除所有定时任务
      */
-    public void scheduleDeleteAll() {
+    public void scheduleDeleteAll(ScheduleJobModel model) {
         try {
             // 获取所有的组
             List<String> jobGroupNameList = scheduler.getJobGroupNames();

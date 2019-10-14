@@ -89,8 +89,8 @@ public class TestController {
      * @return
      */
     @PostMapping("deleteAll")
-    public String scheduleDeleteAll() {
-        service.scheduleDeleteAll();
+    public String scheduleDeleteAll(@RequestBody ScheduleJobModel model) {
+        service.scheduleDeleteAll(model);
         return "ok";
     }
 }
