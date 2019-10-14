@@ -103,8 +103,8 @@ public class ScheduleJobService {
             throw new RuntimeException("group和job名称已存在");
         }
         try {
-            startJob(scheduler, model.getGroupName(), model.getJobName(), model.getCron());
-            scheduler.start();
+            /*startJob(scheduler, model.getGroupName(), model.getJobName(), model.getCron());
+            scheduler.start();*/
             ScheduleJobPo scheduleJobPo = new ScheduleJobPo();
             scheduleJobPo.setGroupName(model.getGroupName());
             scheduleJobPo.setJobName(model.getJobName());

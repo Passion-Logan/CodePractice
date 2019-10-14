@@ -1,5 +1,7 @@
 package com.cody.util;
 
+import java.util.Date;
+
 /**
  * 应用模块名称<p>
  * 代码描述<p>
@@ -16,6 +18,9 @@ public class DateUtil {
      * @return
      */
     public static Long getCurrentTimeStamp() {
+
+        Date timeMillis =
+
         long timeMillis = System.currentTimeMillis();
         return timeMillis;
     }

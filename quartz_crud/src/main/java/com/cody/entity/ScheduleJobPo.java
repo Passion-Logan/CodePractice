@@ -2,6 +2,7 @@ package com.cody.entity;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.util.Date;
 
 /**
  * 应用模块名称<p>
@@ -46,8 +47,8 @@ public class ScheduleJobPo {
     private Integer status;
 
     @Column(name = "create_time")
-    private Long createTime;
+    private Date createTime;
 
     @Column(name = "update_time")
-    private Long updateTime;
+    private Date updateTime;
 }

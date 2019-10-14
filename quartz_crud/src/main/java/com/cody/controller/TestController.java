@@ -86,11 +86,10 @@ public class TestController {
     /**
      * 删除全部定时任务
      *
-     * @param model
      * @return
      */
     @PostMapping("deleteAll")
-    public String scheduleDeleteAll(@RequestBody ScheduleJobModel model) {
+    public String scheduleDeleteAll() {
         service.scheduleDeleteAll();
         return "ok";
     }
