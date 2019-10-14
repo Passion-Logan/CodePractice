@@ -36,11 +36,12 @@ public class ScheduleJobService {
     /**
      * Quartz定时任务核心的功能实现类
      */
+    @Autowired
     private Scheduler scheduler;
 
-    public ScheduleJobService(@Autowired SchedulerFactoryBean schedulerFactoryBean) {
+    /*public ScheduleJobService(@Autowired SchedulerFactoryBean schedulerFactoryBean) {
         scheduler = schedulerFactoryBean.getScheduler();
-    }
+    }*/
 
     /**
      * 项目重启后，初始化原本已经运行的定时任务
