@@ -214,7 +214,7 @@ public class ScheduleJobService {
             throw new RuntimeException("定时任务不存在");
         }
         try {
-            JobKey jobKey = new JobKey(model.getJobName(), model.getGroupName());
+            JobKey jobKey = new JobKey(po.getJobName(), po.getGroupName());
             JobDetail jobDetail = scheduler.getJobDetail(jobKey);
             if (jobDetail == null) {
                 throw new RuntimeException("定时任务不存在");
