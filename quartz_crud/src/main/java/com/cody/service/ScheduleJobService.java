@@ -1,10 +1,10 @@
 package com.cody.service;
 
+import cn.hutool.core.date.DateUtil;
 import com.cody.dao.ScheduleJobDaoRepository;
 import com.cody.entity.ScheduleJobPo;
 import com.cody.entity.model.ScheduleJobModel;
 import com.cody.job.ScheduleQuartzJob;
-import com.cody.util.DateUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.quartz.*;
 import org.quartz.impl.matchers.GroupMatcher;
@@ -103,15 +103,15 @@ public class ScheduleJobService {
             throw new RuntimeException("group和job名称已存在");
         }
         try {
-            /*startJob(scheduler, model.getGroupName(), model.getJobName(), model.getCron());
-            scheduler.start();*/
+            startJob(scheduler, model.getGroupName(), model.getJobName(), model.getCron());
+            scheduler.start();
             ScheduleJobPo scheduleJobPo = new ScheduleJobPo();
             scheduleJobPo.setGroupName(model.getGroupName());
             scheduleJobPo.setJobName(model.getJobName());
             scheduleJobPo.setCron(model.getCron());
             scheduleJobPo.setStatus(0);
-            scheduleJobPo.setCreateTime(DateUtil.getCurrentTimeStamp());
-            scheduleJobPo.setUpdateTime(DateUtil.getCurrentTimeStamp());
+            scheduleJobPo.setCreateTime(DateUtil.parseDate(DateUtil.now()));
+            scheduleJobPo.setUpdateTime(DateUtil.parseDate(DateUtil.now()));
             repository.save(scheduleJobPo);
         } catch (Exception e) {
             log.error("exception:{}", e);

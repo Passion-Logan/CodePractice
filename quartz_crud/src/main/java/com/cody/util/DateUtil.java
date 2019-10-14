@@ -18,9 +18,6 @@ public class DateUtil {
      * @return
      */
     public static Long getCurrentTimeStamp() {
-
-        Date timeMillis =
-
         long timeMillis = System.currentTimeMillis();
         return timeMillis;
     }
