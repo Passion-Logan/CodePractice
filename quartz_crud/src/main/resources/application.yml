@@ -18,22 +18,20 @@ spring:
     show-sql: true
   application:
     name: Spring-Quartz-Scheduler
-  quartz:
-    properties:
-      org:
-        quartz:
-          scheduler:
-            instanceId: AUTO
-            makeSchedulerThreadDaemon: true
-          jobStore:
-            class: org.quartz.impl.jdbcjobstore.JobStoreTX
-            driverDelegateClass: org.quartz.impl.jdbcjobstore.StdJDBCDelegate
-            tablePrefix: QRTZ_
-            isClustered: true
-            misfireThreshold: 25000
-          threadPool:
-            class: org.quartz.simpl.SimpleThreadPool
-            makeThreadsDaemons: true
-            threadCount: 10
-            threadPriority: 5
-            threadsInheritContextClassLoaderOfInitializingThread: true
+#  quartz:
+#    properties:
+#      org:
+#        quartz:
+#          scheduler:
+#            instanceId: AUTO
+#            makeSchedulerThreadDaemon: true
+#          jobStore:
+#            class: org.quartz.impl.jdbcjobstore.JobStoreTX
+#            driverDelegateClass: org.quartz.impl.jdbcjobstore.StdJDBCDelegate
+#            tablePrefix: QRTZ_
+#            useProperties: false
+#          threadPool:
+#            class: org.quartz.simpl.SimpleThreadPool
+#            threadCount: 10
+#            threadPriority: 5
+#            threadsInheritContextClassLoaderOfInitializingThread: true
