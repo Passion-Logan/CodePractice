@@ -78,6 +78,12 @@ public class JobController {
         return result;
     }
 
+    /**
+     * 根据id暂停某个任务
+     * @param id
+     * @return
+     * @throws SchedulerException
+     */
     @PostMapping("pause/{id}")
     public String pause(@PathVariable @NotNull Integer id) throws SchedulerException {
         String result;
@@ -89,9 +95,8 @@ public class JobController {
             JobKey jobKey = jobService.getJobKey(entity);
             Scheduler scheduler = schedulerFactoryBean.getScheduler();
             scheduler.pauseJob(jobKey);
-            
+            result = "Pause Job : " + entity.getName() + " success !";
         }
-
 
         return result;
     }
