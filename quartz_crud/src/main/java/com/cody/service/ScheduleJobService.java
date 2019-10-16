@@ -15,6 +15,7 @@ import org.springframework.util.ObjectUtils;
 import org.springframework.util.StringUtils;
 
 import javax.annotation.PostConstruct;
+import java.util.Date;
 import java.util.List;
 import java.util.Set;
 
@@ -110,8 +111,8 @@ public class ScheduleJobService {
             scheduleJobPo.setJobName(model.getJobName());
             scheduleJobPo.setCron(model.getCron());
             scheduleJobPo.setStatus(0);
-            scheduleJobPo.setCreateTime(DateUtil.parseDate(DateUtil.now()));
-            scheduleJobPo.setUpdateTime(DateUtil.parseDate(DateUtil.now()));
+            scheduleJobPo.setCreateTime(new Date());
+            scheduleJobPo.setUpdateTime(new Date());
             repository.save(scheduleJobPo);
         } catch (Exception e) {
             log.error("exception:{}", e);
