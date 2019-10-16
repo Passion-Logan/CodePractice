@@ -78,6 +78,24 @@ public class JobController {
         return result;
     }
 
+    @PostMapping("pause/{id}")
+    public String pause(@PathVariable @NotNull Integer id) throws SchedulerException {
+        String result;
+        JobEntity entity = jobService.getJobEntityById(id);
+        if (Objects.isNull(entity)) {
+            return "error: id is not exist ";
+        }
+        synchronized (log) {
+            JobKey jobKey = jobService.getJobKey(entity);
+            Scheduler scheduler = schedulerFactoryBean.getScheduler();
+            scheduler.pauseJob(jobKey);
+            
+        }
+
+
+        return result;
+    }
+
     /**
      * 重启数据库中所有的Job
      * 
