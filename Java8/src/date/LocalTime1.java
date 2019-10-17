@@ -13,12 +13,12 @@ import java.time.format.DateTimeFormatter;
  * @author WQL
  * @since 2019年10月17日 0017 17:59
  */
-public class localtime {
+public class LocalTime1 {
 
     public static void main(String[] args) {
-        LocalTime localTime = LocalTime.now();
+        java.time.LocalTime localTime = java.time.LocalTime.now();
 
-        LocalTime oneTime = LocalTime.of(10,10,10);
+        java.time.LocalTime oneTime = java.time.LocalTime.of(10,10,10);
 
         // LocalDateTime与LocalDate和LocalTime之间可以相互转化
         LocalDateTime now = LocalDateTime.now();
@@ -26,7 +26,7 @@ public class localtime {
         LocalDateTime oneTime2 = LocalDateTime.of(2019,10,14,10,12,12);
 
         // 拼接日期
-        LocalTime.now().atDate(LocalDate.now());
+        java.time.LocalTime.now().atDate(LocalDate.now());
 
         // 时间日期格式化
         LocalDateTime dateTime = LocalDateTime.now();

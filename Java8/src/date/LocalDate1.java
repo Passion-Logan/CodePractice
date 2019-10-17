@@ -12,7 +12,7 @@ import java.time.temporal.TemporalAdjusters;
  * @author WQL
  * @since 2019年10月17日 0017 17:41
  */
-public class localdate {
+public class LocalDate1 {
     /**
      * Java8常用的日期和时间类包含LocalDate、LocalTime、Instant、Duration、Period、LocalDateTime以及ZonedDateTime等。
      * 1、LocalDate：不包含时间的日期，比如2019-10-14。可以用来存储生日，周年纪念日，入职日期等。
@@ -26,7 +26,7 @@ public class localdate {
 
     public static void main(String[] args) {
         // 只获取日期
-        LocalDate today = LocalDate.now();
+        java.time.LocalDate today = java.time.LocalDate.now();
         System.out.println(today);
 
         int year = today.getYear();
@@ -45,16 +45,16 @@ public class localdate {
         boolean leapYear = today.isLeapYear();
 
         // 也可以通过静态方法of()或parse创建任意一个日期
-        LocalDate oneDay = LocalDate.of(2019,10,1);
+        java.time.LocalDate oneDay = java.time.LocalDate.of(2019,10,1);
         System.out.println(oneDay);
         // 另外使用before和after可以比较两个日期前后时间。
-        boolean notBefore = LocalDate.parse("2019-10-01").isBefore(LocalDate.parse("2019-10-02"));
-        boolean isAfter = LocalDate.parse("2019-10-01").isAfter(LocalDate.parse("2019-10-02"));
+        boolean notBefore = java.time.LocalDate.parse("2019-10-01").isBefore(java.time.LocalDate.parse("2019-10-02"));
+        boolean isAfter = java.time.LocalDate.parse("2019-10-01").isAfter(java.time.LocalDate.parse("2019-10-02"));
         // 日期进行前一天后一天或前一个月的加减
-        LocalDate tomorrowDay = LocalDate.now().plusDays(1);
-        LocalDate nextMonth =  LocalDate.now().plusMonths(1);
+        java.time.LocalDate tomorrowDay = java.time.LocalDate.now().plusDays(1);
+        java.time.LocalDate nextMonth =  java.time.LocalDate.now().plusMonths(1);
         // 获取某一天的开始时间和当天所在月的第一天
-        LocalDate.now().atStartOfDay();
-        LocalDate.now().with(TemporalAdjusters.firstDayOfMonth());
+        java.time.LocalDate.now().atStartOfDay();
+        java.time.LocalDate.now().with(TemporalAdjusters.firstDayOfMonth());
     }
 }
