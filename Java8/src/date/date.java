@@ -2,7 +2,7 @@ package date;
 
 /**
  * 应用模块名称<p>
- * 代码描述<p>
+ * Java8新特性时间日期库DateTime<p>
  * Copyright: Copyright (C) 2019 XXX, Inc. All rights reserved. <p>
  *
  * @author WQL
