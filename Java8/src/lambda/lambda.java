@@ -1,4 +1,5 @@
 package lambda;
+import java.util.Arrays;
 import	java.util.function.Predicate;
 
 import java.util.List;
@@ -14,7 +15,9 @@ import java.util.List;
 public class lambda {
 
     public static void main(String[] args) {
-
+        List<String> list = Arrays.asList("你好", "世界", "hello", "world");
+        filter(list, (str) -> ("hello".equals(str)));
+        filter(list, (str) -> (((String) str).length() == 2));
     }
 
     public static void filter(List<String> list, Predicate condition) {
