@@ -16,8 +16,18 @@ public class lambda {
 
     public static void main(String[] args) {
         List<String> list = Arrays.asList("你好", "世界", "hello", "world");
-        filter(list, (str) -> ("hello".equals(str)));
-        filter(list, (str) -> (((String) str).length() == 2));
+        //filter(list, (str) -> ("hello".equals(str)));
+        //filter(list, (str) -> (((String) str).length() == 2));
+
+        // 如果需要同时满足两个条件或满足其中一个即可，Predicate可以将这样的多个条件合并成一个。
+        Predicate start = (str) -> (((String) str).startsWith("你好"));
+        Predicate len = (str) -> (((String) str).length() == 2);
+
+        // 满族一个条件
+        list.stream().filter(start).forEach(System.out::println);
+        // 
+
+
     }
 
     public static void filter(List<String> list, Predicate condition) {
