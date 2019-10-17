@@ -27,8 +27,6 @@ public class lambda {
         list.stream().filter(start).forEach(System.out::println);
         // 满足两个条件中的一个
         list.stream().filter(start.or(len)).forEach(System.out::println);
-
-
     }
 
     public static void filter(List<String> list, Predicate condition) {
