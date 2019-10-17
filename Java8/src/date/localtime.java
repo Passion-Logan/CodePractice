@@ -1,6 +1,9 @@
 package date;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 
 /**
  * 应用模块名称<p>
@@ -16,5 +19,20 @@ public class localtime {
         LocalTime localTime = LocalTime.now();
 
         LocalTime oneTime = LocalTime.of(10,10,10);
+
+        // LocalDateTime与LocalDate和LocalTime之间可以相互转化
+        LocalDateTime now = LocalDateTime.now();
+
+        LocalDateTime oneTime2 = LocalDateTime.of(2019,10,14,10,12,12);
+
+        // 拼接日期
+        LocalTime.now().atDate(LocalDate.now());
+
+        // 时间日期格式化
+        LocalDateTime dateTime = LocalDateTime.now();
+        String str = dateTime.format(DateTimeFormatter.ISO_LOCAL_DATE_TIME);
+        System.out.println(str);
+        str = dateTime.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+        System.out.println(str);
     }
 }
