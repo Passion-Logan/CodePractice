@@ -5,7 +5,7 @@ import	java.util.function.Predicate;
 import java.util.List;
 
 /**
- * 应用模块名称<p>
+ * lambda表达式练习<p>
  * 代码描述<p>
  * Copyright: Copyright (C) 2019 XXX, Inc. All rights reserved. <p>
  *
