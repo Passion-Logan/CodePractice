@@ -25,14 +25,15 @@ public class stream {
         person.setAge(14);
 
         List<Person> sons = new ArrayList<Person>(){{
-            add(new Person(){{put("test", 14);}});
-            add(new Person(){{put("test2", 15);}});
+            add(new Person(){{setAge(14);setName("test");}});
+            add(new Person(){{setAge(15);setName("test2");}});
         }};
 
         stream(sons);
     }
 
     public static void stream(List<Person> list) {
+        System.out.println(list.stream().collect(Collectors.summarizingInt(Person::getAge)).getMax());
         System.out.println(list.stream().map(Person::getName).collect(Collectors.joining()));
     }
 }
