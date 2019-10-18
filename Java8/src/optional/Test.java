@@ -40,6 +40,14 @@ public class Test {
     public static String getNameWithOptional(Person person) {
         // optional可通过isPresent()方法来判断是否有值
         // flatMap方法与map相识，map方法如果有值则返回指定get方法的值，否则返回空的optional, 而flatMap则只能放回Optional类型的
-        return Optional.ofNullable(person).map(Person::getName).orElse("--");
+        // orElseThrow方法与get类似，当值 为空则会抛出指定异常
+        //Optional.empty().orElseThrow(() -> new RuntimeException("运行错误"));
+        // ifPresent方法，可对值进行判断然后打印，接收参数为Consumer函数式接口
+        Optional.of("你好：世界").ifPresent(System.out::println);
+        return Optional.ofNullable(person).map(Person::getName).orElseGet(() -> {
+            String a = "hello ";
+            String b = "world";
+            return a + b;
+        });
     }
 }
