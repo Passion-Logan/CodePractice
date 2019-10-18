@@ -11,7 +11,10 @@ package optional;
 public class Test {
 
     public static void main(String[] args) {
-        
+        Person son = new Person();
+        son.setName("test");
+
+        System.out.println(getPersonName(son));
     }
 
     /**
