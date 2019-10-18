@@ -35,5 +35,6 @@ public class stream {
     public static void stream(List<Person> list) {
         System.out.println(list.stream().collect(Collectors.summarizingInt(Person::getAge)).getMax());
         System.out.println(list.stream().map(Person::getName).collect(Collectors.joining()));
+        System.out.println(list.stream().map(Person::getName).collect(Collectors.toList()));
     }
 }
