@@ -47,6 +47,8 @@ public class Test {
         Optional.of("你好：世界").ifPresent((val) -> {
             System.out.println("hello " + val);
         });
+        // filter()方法可用于判断Optional对象是否满足给定条件
+        Optional.of("hello world!").filter((val) -> val.contains("hello"));
         return Optional.ofNullable(person).map(Person::getName).orElseGet(() -> {
             String a = "hello ";
             String b = "world";
