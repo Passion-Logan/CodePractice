@@ -5,8 +5,11 @@ import optional.Person;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
+import static java.util.stream.Collectors.partitioningBy;
 import static java.util.stream.Collectors.reducing;
 import static javax.swing.UIManager.put;
 
@@ -18,7 +21,7 @@ import static javax.swing.UIManager.put;
  * @author WQL
  * @since 2019年10月18日 0018 15:23
  */
-public class stream {
+public class Stream {
 
     public static void main(String[] args) {
         Person person = new Person();
@@ -31,6 +34,9 @@ public class stream {
         }};
 
         stream(sons);
+
+        Stream s = new Stream();
+        s.partition();
     }
 
     public static void stream(List<Person> list) {
@@ -45,6 +51,25 @@ public class stream {
         System.out.println(list.stream().map(Person::getAge).reduce(Integer::sum));
         // 效率最高的写法
         System.out.println(list.stream().mapToInt(Person::getAge).sum());
+    }
 
+    /**
+     * 定义一个 质数区分函数
+     * @param candidate
+     * @return
+     */
+    private boolean isPrime(int candidate) {
+        int candidateRoot =(int) Math.sqrt((double) candidate);
+        return IntStream.rangeClosed(2, candidateRoot).noneMatch(i -> candidate % i == 0);
+    }
+
+    /**
+     * 对100以内的数字分组 分为质数和非质数
+     */
+    public void partition() {
+        Map<Boolean, List<Integer>> partitionPrimes = IntStream.rangeClosed(2, 100).boxed()
+                .collect(partitioningBy(this::isPrime));
+
+        System.out.println(partitionPrimes.toString());
     }
 }
