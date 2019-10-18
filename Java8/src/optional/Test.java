@@ -17,6 +17,7 @@ public class Test {
         son.setName("test");
 
         System.out.println(getPersonName(son));
+        System.out.println(getNameWithOptional(son));
     }
 
     /**
@@ -37,6 +38,7 @@ public class Test {
      * @return
      */
     public static String getNameWithOptional(Person person) {
+        // optional可通过isPresent()方法来判断是否有值
         return Optional.ofNullable(person).map(Person::getName).orElse("--");
     }
 }
