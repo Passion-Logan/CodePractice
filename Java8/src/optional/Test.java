@@ -1,5 +1,7 @@
 package optional;
 
+import java.util.Optional;
+
 /**
  * 应用模块名称<p>
  * 代码描述<p>
@@ -27,5 +29,14 @@ public class Test {
         } else {
             return "--";
         }
+    }
+
+    /**
+     * 使用optional实现判断非空
+     * @param person
+     * @return
+     */
+    public static String getNameWithOptional(Person person) {
+        return Optional.ofNullable(person).map(Person::getName).orElse("--");
     }
 }
