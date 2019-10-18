@@ -43,6 +43,8 @@ public class stream {
         System.out.println(list.stream().collect(reducing(0, Person::getAge, Integer::sum)));
         // 写法三 直接使用reduce 返回一个optional对象
         System.out.println(list.stream().map(Person::getAge).reduce(Integer::sum));
+        // 效率最高的写法
+        System.out.println(list.stream().mapToInt(Person::getAge).sum());
 
     }
 }
