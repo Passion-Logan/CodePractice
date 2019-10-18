@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import static java.util.stream.Collectors.reducing;
 import static javax.swing.UIManager.put;
 
 /**
@@ -36,5 +37,7 @@ public class stream {
         System.out.println(list.stream().collect(Collectors.summarizingInt(Person::getAge)).getMax());
         System.out.println(list.stream().map(Person::getName).collect(Collectors.joining()));
         System.out.println(list.stream().map(Person::getName).collect(Collectors.toList()));
+        // 自定义归约reducing，举例：求和
+        System.out.println(list.stream().collect(reducing(0, Person::getAge, (i, j) -> i + j)));
     }
 }
