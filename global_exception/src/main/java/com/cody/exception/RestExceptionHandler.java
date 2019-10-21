@@ -19,6 +19,6 @@ import org.springframework.web.bind.annotation.RestController;
 @ResponseBody
 public class RestExceptionHandler {
     public ApiResult runtimeExceptionHandler(Exception e) {
-        return
+        return ApiResultGenerator.errorResult(e.getMessage(), e);
     }
 }
