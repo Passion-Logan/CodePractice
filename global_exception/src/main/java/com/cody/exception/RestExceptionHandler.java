@@ -1,5 +1,6 @@
 package com.cody.exception;
 
+import com.cody.entity.ApiResult;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -17,5 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 @ControllerAdvice(annotations = RestController.class)
 @ResponseBody
 public class RestExceptionHandler {
-    public
+    public ApiResult runtimeExceptionHandler(Exception e) {
+        return
+    }
 }
