@@ -27,7 +27,7 @@ public final class ApiResultGenerator {
     public static ApiResult result(boolean flag, String msg, Object result, String jumpUrl, int rows, Throwable throwable) {
         // 创建返回对象
         ApiResult apiResult = ApiResult.newInstance();
-        apiResult.setFlag(true);
+        apiResult.setFlag(flag);
         apiResult.setMsg(msg == "" ? "执行成功" : msg);
         apiResult.setResult(result);
         apiResult.setJumpUrl(jumpUrl);
