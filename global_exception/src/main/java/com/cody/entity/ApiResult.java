@@ -1,5 +1,6 @@
 package com.cody.entity;
 
+import jdk.nashorn.internal.objects.annotations.Function;
 import org.springframework.util.ObjectUtils;
 
 import java.io.Serializable;
@@ -53,5 +54,27 @@ public class ApiResult implements Serializable {
      */
     private long time;
 
+    public void setMsg(String msg) {
+        this.msg = msg;
+    }
 
+    public void setFlag(boolean flag) {
+        this.flag = flag;
+    }
+
+    public void setResult(Object result) {
+        this.result = result;
+    }
+
+    public void setRows(int rows) {
+        this.rows = rows;
+    }
+
+    public void setJumpUrl(String jumpUrl) {
+        this.jumpUrl = jumpUrl;
+    }
+
+    public void setTime(long time) {
+        this.time = time;
+    }
 }
