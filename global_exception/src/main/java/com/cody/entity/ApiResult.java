@@ -1,7 +1,6 @@
 package com.cody.entity;
 
-import jdk.nashorn.internal.objects.annotations.Function;
-import org.springframework.util.ObjectUtils;
+import com.alibaba.fastjson.JSON;
 
 import java.io.Serializable;
 
@@ -18,11 +17,13 @@ public class ApiResult implements Serializable {
     /**
      * 禁止new创建对象
      */
-    private ApiResult() {}
+    private ApiResult() {
+    }
 
     /**
      * 统一创建ApiResultBean对象
      * 方便后期扩展
+     *
      * @return
      */
     public static ApiResult newInstance() {
@@ -76,5 +77,34 @@ public class ApiResult implements Serializable {
 
     public void setTime(long time) {
         this.time = time;
+    }
+
+    public String getMsg() {
+        return msg;
+    }
+
+    public boolean isFlag() {
+        return flag;
+    }
+
+    public Object getResult() {
+        return result;
+    }
+
+    public int getRows() {
+        return rows;
+    }
+
+    public String getJumpUrl() {
+        return jumpUrl;
+    }
+
+    public long getTime() {
+        return time;
+    }
+
+    @Override
+    public String toString() {
+        return JSON.toJSONString(this);
     }
 }
