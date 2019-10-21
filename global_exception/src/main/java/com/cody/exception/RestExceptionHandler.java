@@ -2,6 +2,7 @@ package com.cody.exception;
 
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
 /**
  * result统一异常处理<p>
@@ -13,7 +14,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
  * @author WQL
  * @since 2019年10月21日 0021 14:34
  */
-@ControllerAdvice
+@ControllerAdvice(annotations = RestController.class)
 @ResponseBody
 public class RestExceptionHandler {
+    public
 }
