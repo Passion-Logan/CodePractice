@@ -60,4 +60,14 @@ public final class ApiResultGenerator {
     public static ApiResult successResult(HttpServletRequest request) {
         return successResult("");
     }
+
+    /**
+     * 执行失败后返回视图方法
+     * @param msg
+     * @param throwable
+     * @return
+     */
+    public static ApiResult errorResult(String msg, Throwable throwable) {
+        return result(false, msg, "", "", 0, throwable);
+    }
 }
