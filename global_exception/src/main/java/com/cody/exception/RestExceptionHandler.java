@@ -1,9 +1,7 @@
 package com.cody.exception;
 
 import com.cody.entity.ApiResult;
-import org.springframework.web.bind.annotation.ControllerAdvice;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * result统一异常处理<p>
@@ -18,6 +16,14 @@ import org.springframework.web.bind.annotation.RestController;
 @ControllerAdvice(annotations = RestController.class)
 @ResponseBody
 public class RestExceptionHandler {
+    /**
+     * @ExceptionHandler 用来配置需要拦截的异常类型，默认是全局类型
+     * @ResponseStatus 用来配置遇到该异常返回数据时的StatusCode的值，默认使用值500
+     * @param e
+     * @return
+     */
+    @ExceptionHandler
+    @ResponseStatus
     public ApiResult runtimeExceptionHandler(Exception e) {
         return ApiResultGenerator.errorResult(e.getMessage(), e);
     }
