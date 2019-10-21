@@ -2,6 +2,7 @@ package com.cody.exception;
 
 import com.cody.entity.ApiResult;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 /**
@@ -35,6 +36,11 @@ public final class ApiResultGenerator {
         return apiResult;
     }
 
+    /**
+     * 返回执行成功视图方法
+     * @param result
+     * @return
+     */
     public static ApiResult successResult(Object result) {
         // rows默认为0
         int rows = 0;
@@ -44,5 +50,14 @@ public final class ApiResultGenerator {
             rows = ((List) result).size();
         }
         return result(true,"",result,"",rows,null);
+    }
+
+    /**
+     * 成功没有内容方法
+     * @param request
+     * @return
+     */
+    public static ApiResult successResult(HttpServletRequest request) {
+        return successResult("");
     }
 }
