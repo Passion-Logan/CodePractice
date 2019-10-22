@@ -1,5 +1,11 @@
 package com.cody.rabbitmq;
 
+import org.springframework.amqp.core.AmqpTemplate;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+import java.util.Date;
+
 /**
  * 生产者<p>
  * 代码描述<p>
@@ -8,5 +14,15 @@ package com.cody.rabbitmq;
  * @author WQL
  * @since 2019年10月22日 0022 16:36
  */
+@Component
 public class Sender {
+
+    @Autowired
+    private AmqpTemplate rabbitTemplate;
+
+    public void send() {
+        String context = "hello " + new Date();
+        System.out.println("Sender : " + context);
+        this.rabbitTemplate.convertAndSend("hello", context);
+    }
 }
