@@ -1,5 +1,10 @@
 package com.cody.config;
 
+import org.springframework.amqp.core.Queue;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+
+
 /**
  * 应用模块名称<p>
  * 代码描述<p>
@@ -8,5 +13,11 @@ package com.cody.config;
  * @author WQL
  * @since 2019年10月22日 0022 16:29
  */
+@Configuration
 public class RabbitConfig {
+
+    @Bean
+    public Queue helloQueue() {
+        return new Queue("hello");
+    }
 }
