@@ -55,4 +55,15 @@ public class Sender {
         map.put("messageData", messageData);
         rabbitTemplate.convertAndSend("lonelyDirectExchange", "TestDirectRouting", map);
     }
+
+    /**
+     * 测试消息回调确认：
+     * 第三种情况：消息推送到server，交换机和队列啥都没找到
+     * 这种情况其实一看就觉得跟①很像，没错 ，③和①情况回调是一致的
+     */
+
+    /**
+     * 测试消息回调确认：
+     * 第四种情况：消息推送成功
+     */
 }
