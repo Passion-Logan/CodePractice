@@ -17,6 +17,11 @@ class RabbitmqApplicationTests {
     }
 
     @Test
+    public void TestMessageAck() {
+        sender.TestMessageAck();
+    }
+
+    @Test
     void contextLoads() {
     }
 
