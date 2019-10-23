@@ -86,12 +86,14 @@ public class RabbitConfig {
         // 设置开启Mandatory,才能触发回调函数,无论消息推送结果怎么样都强制调用回调函数
         rabbitTemplate.setMandatory(true);
 
+        // 消息发送回调
         rabbitTemplate.setConfirmCallback((correlationData, ack, cause) -> {
             System.out.println("ConfirmCallback:     " + "相关数据：" + correlationData);
             System.out.println("ConfirmCallback:     " + "确认情况：" + ack);
             System.out.println("ConfirmCallback:     " + "原因：" + cause);
         });
 
+        // 消息接收回调
         rabbitTemplate.setReturnCallback((message, replyCode, replyText, exchange, routingKey) -> {
             System.out.println("ReturnCallback:     " + "消息：" + message);
             System.out.println("ReturnCallback:     " + "回应码：" + replyCode);
