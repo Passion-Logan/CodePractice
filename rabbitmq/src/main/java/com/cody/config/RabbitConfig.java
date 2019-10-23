@@ -1,5 +1,6 @@
 package com.cody.config;
 
+import org.springframework.amqp.core.DirectExchange;
 import org.springframework.amqp.core.Queue;
 import org.springframework.amqp.rabbit.connection.ConnectionFactory;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
@@ -21,6 +22,11 @@ public class RabbitConfig {
     @Bean
     public Queue helloQueue() {
         return new Queue("hello");
+    }
+
+    @Bean
+    DirectExchange lonelyDirectExchange() {
+        return new DirectExchange("lonelyDirectExchange");
     }
 
     /**

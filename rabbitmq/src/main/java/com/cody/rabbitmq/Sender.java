@@ -43,4 +43,16 @@ public class Sender {
         map.put("messageData", messageData);
         rabbitTemplate.convertAndSend("non-existent-exchange", "TestDirectRouting", map);
     }
+
+    /**
+     * 测试消息回调确认：
+     * 第二种情况：消息推送到server，找到交换机了，但是没找到队列
+     * 把消息推送到名为‘lonelyDirectExchange’的交换机上（这个交换机是没有任何队列配置的）
+     */
+    public void TestMessageAck1() {
+        String messageData = "message: lonelyDirectExchange test message ";
+        Map<String, Object> map = new HashMap<>(1);
+        map.put("messageData", messageData);
+        rabbitTemplate.convertAndSend("lonelyDirectExchange", "TestDirectRouting", map);
+    }
 }
