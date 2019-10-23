@@ -4,6 +4,8 @@ import org.springframework.amqp.rabbit.annotation.RabbitHandler;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.stereotype.Component;
 
+import java.util.Map;
+
 /**
  * 消费者<p>
  * 代码描述<p>
@@ -20,10 +22,10 @@ public class Receiver {
      * 该消费者者实现了对hello队列的消费
      * 消费操作为输出消息的字符内容
      *
-     * @param hello
+     * @param message
      */
     @RabbitHandler
-    public void process(String hello) {
-        System.out.println("Receiver : " + hello);
+    public void process(Map message) {
+        System.out.println("Receiver : " + message.toString());
     }
 }
