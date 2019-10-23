@@ -2,7 +2,6 @@ package com.cody.rabbitmq;
 
 import com.rabbitmq.client.Channel;
 import org.springframework.amqp.core.Message;
-import org.springframework.amqp.rabbit.annotation.RabbitHandler;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.amqp.rabbit.listener.api.ChannelAwareMessageListener;
 import org.springframework.stereotype.Component;
@@ -32,7 +31,6 @@ public class Receiver implements ChannelAwareMessageListener {
     public void process(Map message) {
         System.out.println("Receiver : " + message.toString());
     }*/
-
     @Override
     public void onMessage(Message message, Channel channel) throws Exception {
         long deliveryTag = message.getMessageProperties().getDeliveryTag();
@@ -43,10 +41,10 @@ public class Receiver implements ChannelAwareMessageListener {
             // 可以点进Message里面看源码,单引号直接的数据就是我们的map消息数据
             String[] msgArray = msg.split("'");
             Map<String, String> msgMap = mapStringToMap(msgArray[1].trim());
-            String messageId=msgMap.get("messageId");
-            String messageData=msgMap.get("messageData");
-            String createTime=msgMap.get("createTime");
-            System.out.println("messageId:"+messageId+"  messageData:"+messageData+"  createTime:"+createTime);
+            String messageId = msgMap.get("messageId");
+            String messageData = msgMap.get("messageData");
+            String createTime = msgMap.get("createTime");
+            System.out.println("messageId:" + messageId + "  messageData:" + messageData + "  createTime:" + createTime);
             channel.basicAck(deliveryTag, true);
         } catch (Exception e) {
             channel.basicReject(deliveryTag, false);
@@ -57,7 +55,7 @@ public class Receiver implements ChannelAwareMessageListener {
     private Map<String, String> mapStringToMap(String str) {
         str = str.substring(1, str.length() - 1);
         String[] strs = str.split(",");
-        Map<String, String> map = new HashMap<String, String>();
+        Map<String, String> map = new HashMap<>();
         for (String string : strs) {
             String key = string.split("=")[0].trim();
             String value = string.split("=")[1];
