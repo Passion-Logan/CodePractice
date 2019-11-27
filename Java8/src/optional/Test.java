@@ -22,6 +22,7 @@ public class Test {
 
     /**
      * 老式判断非空写法
+     *
      * @return
      */
     public static String getPersonName(Person person) {
@@ -34,6 +35,7 @@ public class Test {
 
     /**
      * 使用optional实现判断非空
+     *
      * @param person
      * @return
      */
