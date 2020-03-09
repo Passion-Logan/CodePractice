@@ -6,6 +6,7 @@ import java.security.SecureRandom;
 
 /**
  * ClassName: BCrypt
+ *
  * @Description: BCrypt加密工具类
  * @date: 2020年3月9日 0009 12:11
  * @author WQL
