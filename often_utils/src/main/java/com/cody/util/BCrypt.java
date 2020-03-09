@@ -5,8 +5,9 @@ import java.io.UnsupportedEncodingException;
 import java.security.SecureRandom;
 
 /**
- * ClassName: BCrypt Description: date: 2020年3月9日 0009 12:11
- *
+ * ClassName: BCrypt
+ * @Description:
+ * @date: 2020年3月9日 0009 12:11
  * @author WQL
  * @since JDK 1.8
  */
