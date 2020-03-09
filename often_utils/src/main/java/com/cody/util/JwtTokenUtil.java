@@ -18,19 +18,6 @@ import java.util.Map;
 import io.jsonwebtoken.*;
 
 /**
- *
- *
- * @author lujing
- * @Date 2018/12/25 10:59
- */
-
-/**
- *
- *
- * <p>
- * jwt token工具类
- * </p>
- *
  * <pre>
  *     jwt的claim里一般包含以下几种数据:
  *         1. iss -- token的发行者
@@ -42,10 +29,10 @@ import io.jsonwebtoken.*;
  *         7. jti -- jwt唯一标识,防止重复使用
  * </pre>
  *
- * ClassName: test
+ * ClassName: JwtTokenUtil
  *
  * @author WQL
- * @Description:
+ * @Description: jwt token工具类
  * @date: 2020年3月9日 0009 13:57
  * @since JDK 1.8
  */
