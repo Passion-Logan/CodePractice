@@ -33,5 +33,13 @@ public class two {
      *  如表达式\s*cat\s*匹配0或更多个空格开头和0或更多个空格结尾的cat字符串。 匹配 cat
      *          "\s*cat\s*" => The fat cat sat on the concatenation.
      *
+     * 3.2 + 号   +号匹配+号之前的字符出现 >=1 次。
+     * 例如表达式c.+t 匹配以首字母c开头以t结尾，中间跟着至少一个字符的字符串 匹配 cat sat on the mat
+     *          "c.+t" => The fat cat sat on the mat.
+     *
+     * 3.3 ? 号  在正则表达式中元字符 ? 标记在符号前面的字符为可选，即出现 0 或 1 次。
+     * 例如，表达式 [T]?he 匹配字符串 he 和 The
+     *          "[T]he" => The car is parked in the garage.
+     *
      */
 }
