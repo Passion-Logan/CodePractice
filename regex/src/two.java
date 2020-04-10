@@ -39,7 +39,7 @@ public class two {
      *
      * 3.3 ? 号  在正则表达式中元字符 ? 标记在符号前面的字符为可选，即出现 0 或 1 次。
      * 例如，表达式 [T]?he 匹配字符串 he 和 The
-     *          "[T]he" => The car is parked in the garage.
+     *          "[T]?he" => The car is parked in the garage.
      *
      */
 }
