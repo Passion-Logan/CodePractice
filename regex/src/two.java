@@ -20,8 +20,18 @@ public class two {
      *          "ar[.]" => A garage is a good place to park a car.
      *
      * 2.1 否定字符集 一般来说 ^ 表示一个字符串的开头，但它用在一个方括号的开头的时候，它表示这个字符集是否定的。
-     * 例如，表达式[^c]ar 匹配一个后面跟着ar的除了c的任意字符
+     * 例如，表达式[^c]ar 匹配一个后面跟着ar的除了c的任意字符 匹配 par 和 gar。
      *          "[^c]ar" => The car parked in the garage.
+     *
+     * 3 重复次数 后面跟着元字符 +，* or ? 的，用来指定匹配子模式的次数。 这些元字符在不同的情况下有着不同的意思。
+     *
+     * 3.1 * 号   *号匹配 在*之前的字符出现大于等于0次。 例如，表达式 a* 匹配0或更多个以a开头的字符。
+     * 表达式[a-z]* 匹配一个行中所有以小写字母开头的字符串。 匹配 The car parked in the garage
+     *          "[a-z]*" => The car parked in the garage #21.
+     *
+     *  *字符和.字符搭配可以匹配所有的字符.*。 *和表示匹配空格的符号\s连起来用，
+     *  如表达式\s*cat\s*匹配0或更多个空格开头和0或更多个空格结尾的cat字符串。 匹配 cat
+     *          "\s*cat\s*" => The fat cat sat on the concatenation.
      *
      */
 }
