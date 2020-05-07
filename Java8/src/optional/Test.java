@@ -46,9 +46,7 @@ public class Test {
         Optional.empty().orElseThrow(() -> new RuntimeException("运行错误"));
         // ifPresent方法，可对值进行判断然后打印，接收参数为Consumer函数式接口
         Optional.of("你好：世界").ifPresent(System.out::println);
-        Optional.of("你好：世界").ifPresent((val) -> {
-            System.out.println("hello " + val);
-        });
+        Optional.of("你好：世界").ifPresent((val) -> System.out.println("hello " + val));
         // filter()方法可用于判断Optional对象是否满足给定条件
         Optional.of("hello world!").filter((val) -> val.contains("hello"));
         return Optional.ofNullable(person).map(Person::getName).orElseGet(() -> {
